@@ -1,5 +1,6 @@
 # Python IVP GUI
-Python GUI app. Display the solution of initial value (Cauchy) problem. Solution for the assignment in differential equations course in Innopolis University.
+Python GUI app. Display the solution of initial value (Cauchy) problem. Solution for the assignment in differential 
+equations course in Innopolis University.
 
 ## Requirements:
 - Python 3.9.6
@@ -13,7 +14,9 @@ Python GUI app. Display the solution of initial value (Cauchy) problem. Solution
 
 ## Work description
 ### Work aim: 
-Automate the application of computational methods to solve the initial value problem, visualize the constructed solutions. Compare the values of local truncation error for different numerical methods, estimate the change in total error with an increase in the number of steps in the interval.
+Automate the application of computational methods to solve the initial value problem, visualize the constructed 
+solutions. Compare the values of local truncation error for different numerical methods, estimate the change in total 
+error with an increase in the number of steps in the interval.
 ### Given
 ![](https://habrastorage.org/webt/qg/b0/xs/qgb0xsa05s0wd-jkmosdzgdqmcs.png)
 
@@ -90,25 +93,27 @@ Code style:
 - SOLID principles
 
 ### UML-diagrams of classes
-![](https://habrastorage.org/webt/ym/b1/wb/ymb1wbkgxsngn_g_urvnq80jsas.png)
+I have two classes in my program: GUI for user interface and y_i for numerical solutions. The GUI uses implemented 
+classes of y_i. For each numerical method there is a special y_i.
+![](https://habrastorage.org/webt/2n/ct/ff/2nctffpihgmliscqfpbx_eyjvrg.png)
 
 ### Most interesting parts of source code
-The class y_i is used to calculate the numerical solution of the ODE. It contains attributes: the derivative of the y, current x and y and step size. It contains 3 methods that compute the next approximate value. 
+The class y_i is used to calculate the numerical solution of the ODE. It contains attributes: the derivative of the y, 
+current x and y and step size. It is an abstract class, which is implemented by y_i_euler, y_i_imp_euler, 
+y_i_runge_kutta classes.
 
 ```
 # calculations.py
 class y_i:
    def __init__(self, step, f, y0, x0):
        ...
-   def next_euler(self):
-       ...
-   def next_improved_euler(self):
-       ...
-   def next_runge_kutter(self):
-       ...
+   def next(self)
 ```
 
-The class GUI is used to build the program’s window and display it. It contains attributes: objects in the window and graphs’ parameters. It contains methods for initialization objects in the window (_init_window, _init_final_report_frame), for initialization graphs’ parameters (_init_graph_values), and 2 methods for updating graphs (_read_input, update_final_report). 
+The class GUI is used to build the program’s window and display it. It contains attributes: objects in the window and 
+graphs’ parameters. It contains methods for initialization objects in the window 
+(_init_window, _init_final_report_frame), for initialization graphs’ parameters (_init_graph_values), and 2 methods for 
+updating graphs (_read_input, update_final_report). 
 
 ```
 # GUI.py
@@ -129,7 +134,9 @@ class GUI:
       ...
 ```
 
-To avoid computation of functions where they do not exist, I used a special trick to avoid it. Trick: code checks if the x turns to an impossible value. If so then it adds a small delta to each step, so x never turns into impossible values.
+To avoid computation of functions where they do not exist, I used a special trick to avoid it. Trick: code checks if 
+the x turns to an impossible value. If so then it adds a small delta to each step, so x never turns into impossible 
+values.
 
 ```
 # calculations.py get_solutions_info
@@ -142,4 +149,8 @@ if 0.0 in arange(x0_, X_ + step, step):
 ![](https://habrastorage.org/webt/e0/93/xh/e093xhfcxwvshlwgneb9hnxmsb0.png)
 
 ### Conclusion
-I automated the application of computational methods to solve the initial value problem, and visualized the constructed solutions. Comparing the values of local truncation error for different numerical methods shows that Runge-Kutta method is the most accurate, Improved Euler’s have comparable accuracy with Runge-Kutta, and Euler’s method has relatively big truncation error. Estimation of the change in total error with an increase in the number of steps in the interval shows that increase of the number of steps yields less total error for all methods.
+I automated the application of computational methods to solve the initial value problem, and visualized the constructed 
+solutions. Comparing the values of local truncation error for different numerical methods shows that Runge-Kutta method 
+is the most accurate, Improved Euler’s have comparable accuracy with Runge-Kutta, and Euler’s method has relatively big 
+truncation error. Estimation of the change in total error with an increase in the number of steps in the interval shows 
+that increase of the number of steps yields less total error for all methods.

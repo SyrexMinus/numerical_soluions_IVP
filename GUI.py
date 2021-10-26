@@ -192,35 +192,35 @@ class GUI:
             pass
 
         try:
-            self.start_n_TE = int(self.start_n_TE_field.get())
+            self.start_n_TE = float(self.start_n_TE_field.get())
         except:
             pass
         try:
-            self.end_n_TE = int(self.end_n_TE_field.get())
+            self.end_n_TE = float(self.end_n_TE_field.get())
         except:
             pass
         try:
-            self.start_TE_TE = int(self.start_TE_field.get())
+            self.start_TE_TE = float(self.start_TE_field.get())
         except:
             pass
         try:
-            self.end_TE_TE = int(self.end_TE_field.get())
+            self.end_TE_TE = float(self.end_TE_field.get())
         except:
             pass
         try:
-            self.start_x_LE = int(self.start_x_LE_field.get())
+            self.start_x_LE = float(self.start_x_LE_field.get())
         except:
             pass
         try:
-            self.end_x_LE = int(self.end_x_LE_field.get())
+            self.end_x_LE = float(self.end_x_LE_field.get())
         except:
             pass
         try:
-            self.start_LE_LE = int(self.start_LE_field.get())
+            self.start_LE_LE = float(self.start_LE_field.get())
         except:
             pass
         try:
-            self.end_LE_LE = int(self.end_LE_field.get())
+            self.end_LE_LE = float(self.end_LE_field.get())
         except:
             pass
 
